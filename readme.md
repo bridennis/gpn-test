@@ -52,7 +52,7 @@ cp .env.example .env
 php artisan key:generate
 
 touch database/database.sqlite
-php artisan migrate
+php artisan migrate --force
 
 php artisan serve
 ```
@@ -62,7 +62,7 @@ php artisan serve
 
 ##### Примечания
 
-- Функционал 1 через CLI
+- Функционал 1 через CLI (см. помощь):
 
 ```
 php artisan help numbers:get-from-file-by-digit
