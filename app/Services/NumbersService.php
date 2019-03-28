@@ -70,9 +70,9 @@ class NumbersService
      */
     protected static function validateArgsGetFromFileByDigitArgs(string $file, int $digit) :bool
     {
-        $validator = Validator::make(compact($file, $digit), (new NumbersFindInFileRequest())->rules());
+        $validator = Validator::make(compact('file', 'digit'), (new NumbersFindInFileRequest())->rules());
 
-        return $validator->fails();
+        return !$validator->fails();
     }
 
     /**
