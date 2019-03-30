@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/bridennis/gpn-test.svg?branch=master)](https://travis-ci.org/bridennis/gpn-test) 
+[![codecov](https://codecov.io/gh/bridennis/gpn-test/branch/master/graph/badge.svg)](https://codecov.io/gh/bridennis/gpn-test)
+
+
+
 ### Задание:
 
 Необходимо реализовать на Laravel проект с функционалом:
