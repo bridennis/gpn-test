@@ -37,7 +37,7 @@
 
 ##### Требования
 
-[PHP](https://www.php.net/downloads.php) >= 7.1.3
+[PHP](https://www.php.net/downloads.php) >= 7.1.8
 
 [Composer](https://getcomposer.org/)
 
