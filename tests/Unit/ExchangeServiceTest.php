@@ -37,7 +37,7 @@ EOD;
         $amount = 100;
         $currency = 'USD';
 
-        $expected = '6459.25';
+        $expected = '6 459,25';
 
         $mockFcmExchangeRateRepository = new MockFcmExchangeRateRepository('');
         $exchangeService = new ExchangeService($mockFcmExchangeRateRepository);
@@ -56,7 +56,7 @@ EOD;
 
         $amount = 100;
         $currency = 'USD';
-        $expected = '6459.25';
+        $expected = '6 459,25';
 
         Cache::shouldReceive('has')
             ->twice()
