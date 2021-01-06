@@ -67,6 +67,8 @@
             "touch database/database.sqlite",
             "php artisan migrate --force",
             "chmod g+w,o+w database/database.sqlite",
+            "chmod g+w,o+w database",
+            "chmod g+w,o+w stirage/logs",
             "find storage/framework/* -type d -exec chmod g+w,o+w {} \\;"
         ]
     }
