@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Contracts\ExchangeRateRepositoryInterface;
+use NumberFormatter;
 
 /**
  * Сервис конвертер валют.
@@ -35,6 +36,9 @@ class ExchangeService
         $value = $this->exchangeRateProvider->getValue($currency);
         $nominal = $this->exchangeRateProvider->getNominal($currency);
 
-        return ($value && $nominal) ? money_format('%.2n', ($value / $nominal) * $amount) : -1;
+        return ($value && $nominal) ?
+            NumberFormatter::create('ru_RU', NumberFormatter::DECIMAL)
+                ->format(($value / $nominal) * $amount)
+            : -1;
     }
 }
