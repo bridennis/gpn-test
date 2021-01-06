@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  php:
+    image: bridennis/anpx:7.4
+    volumes:
+      - ./:/var/www/html
+      - ./etc/:/usr/etc/
+    ports:
+      - 80:80
