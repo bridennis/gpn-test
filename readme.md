@@ -2,7 +2,6 @@
 [![codecov](https://codecov.io/gh/bridennis/gpn-test/branch/master/graph/badge.svg)](https://codecov.io/gh/bridennis/gpn-test)
 
 
-
 ### Задание:
 
 Необходимо реализовать на Laravel проект с функционалом:
@@ -30,7 +29,7 @@
 
 2. Необходимо написать метод интеграции с курсом валют, рекомендую для примера использовать https://www.cbr-xml-daily.ru/daily_utf8.xml.
 
-На вход подаем два параметра amount и currency. Необходимо сконвертировать значение amount относительно валюты , заданной в currency, например:
+На вход подаем два параметра amount и currency. Необходимо сконвертировать значение amount относительно валюты, заданной в currency, например:
 
 ```
 ?amount=100&currency=USD
@@ -42,35 +41,32 @@
 
 ##### Требования
 
-[PHP](https://www.php.net/downloads.php) >= 7.1.8
+###### Общие
+
+[PHP](https://www.php.net/downloads.php) >= 7.4.0
 
 [Composer](https://getcomposer.org/)
 
 Laravel framework 5.8.x
 - см. [Server Requirements](https://laravel.com/docs/5.8/installation)
 
-##### Запуск
+###### Для запуска проекта в контейнере
+
+[docker](https://www.docker.com/)
+
+##### Запуск проекта в контейнере
+
 ```
-composer install
-
-cp .env.example .env
-php artisan key:generate
-
-touch database/database.sqlite
-php artisan migrate --force
-
-php artisan serve
+docker-compose up -d
+docker-compose exec php composer install
 ```
 
-Открываем браузер: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-
+Открываем браузер: [http://localhost/](http://localhost/)
 
 ##### Примечания
 
 - Функционал 1 через CLI (см. помощь):
 
 ```
-php artisan help numbers:get-from-file-by-digit
+docker-compose exec php php artisan help numbers:get-from-file-by-digit
 ```
-
-- Руководствуясь принципом YAGNI с одной стороны и текстом задания с другой, разработчик осознает вероятную избыточность фронтенд функционала и недостаточное (либо излишнее) покрытие тестами.
