@@ -1,28 +1,25 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\UploadedFile;
 
-class NumbersFindInFileRequest extends FormRequest
+class FindNumbersInFileRequest extends FormRequest
 {
     /**
      * Определяет пользователей авторизованных для этого запроса.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
      * Правила валидации.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'file' => [

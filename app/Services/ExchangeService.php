@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Services;
 
@@ -12,11 +13,7 @@ use NumberFormatter;
  */
 class ExchangeService
 {
-
-    /**
-     * @var ExchangeRateRepositoryInterface
-     */
-    private $exchangeRateProvider;
+    private ExchangeRateRepositoryInterface $exchangeRateProvider;
 
     public function __construct(ExchangeRateRepositoryInterface $exchangeRate)
     {
@@ -29,16 +26,16 @@ class ExchangeService
      * @param int $amount Сумма в валюте для конвертации. Целое число
      * @param string $currency Коды валюты в стандарте ISO 4217
      *
-     * @return string Сумма в рублях. -1 в случае невозможности конвертации
+     * @return string Сумма в рублях
      */
-    public function convertFromCurrencyToRub(int $amount, string $currency) :string
+    public function convertFromCurrencyToRub(int $amount, string $currency): string
     {
         $value = $this->exchangeRateProvider->getValue($currency);
         $nominal = $this->exchangeRateProvider->getNominal($currency);
 
         return ($value && $nominal) ?
-            NumberFormatter::create('ru_RU', NumberFormatter::DECIMAL)
+            (string) NumberFormatter::create('ru_RU', NumberFormatter::DECIMAL)
                 ->format(($value / $nominal) * $amount)
-            : -1;
+            : '';
     }
 }

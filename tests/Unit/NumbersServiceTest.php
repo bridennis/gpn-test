@@ -1,15 +1,16 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Unit;
 
 use App\Services\NumbersService;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+class NumbersServiceTest extends TestCase
 {
-    public static $fileContents = '43534 кот 45 23';
-    public static $digit = '4';
-    public static $expectedString = <<<'EOD'
+    public static string $fileContents = '43534 кот 45 23';
+    public static int $digit = 4;
+    public static string $expectedString = <<<'EOD'
 [
 43534,
 45
@@ -19,10 +20,8 @@ EOD;
 
     /**
      * Тестируем пример вывода.
-     *
-     * @return void
      */
-    public function testExpectedOutputIsTrue()
+    public function testExpectedOutputIsTrue(): void
     {
         $mockNumbersService = new MockNumbersService(static::$fileContents);
 
@@ -34,16 +33,14 @@ EOD;
     /**
      * Тестируем пример вывода.
      * Используем контейнер внедрения зависимостей и мокирование анонимным классом.
-     *
-     * @return void
      */
-    public function testMockingThroughAnonymousClassNumbersServiceExpectedOutputIsTrue()
+    public function testMockingThroughAnonymousClassNumbersServiceExpectedOutputIsTrue(): void
     {
         $fileContents = static::$fileContents;
         app()->bind('App\Services\NumbersService', function () use ($fileContents) {
             return new class($fileContents) extends NumbersService
             {
-                private static $fileContents;
+                private static string $fileContents;
 
                 public function __construct($fileContents)
                 {
@@ -55,7 +52,7 @@ EOD;
                     return true;
                 }
 
-                protected static function genStringsFromFile(string $fileName)
+                protected static function genStringsFromFile(string $fileName): iterable
                 {
                     yield static::$fileContents;
                 }

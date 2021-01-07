@@ -1,13 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Unit;
-
 
 use App\Services\NumbersService;
 
 class MockNumbersService extends NumbersService
 {
-    private static $fileContents;
+    private static string $fileContents;
 
     public function __construct($fileContents)
     {
@@ -19,7 +19,7 @@ class MockNumbersService extends NumbersService
         return true;
     }
 
-    protected static function genStringsFromFile(string $fileName)
+    protected static function genStringsFromFile(string $fileName): iterable
     {
         yield static::$fileContents;
     }

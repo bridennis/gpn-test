@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Requests;
 
@@ -8,20 +9,16 @@ class ExchangeConvertToRequest extends FormRequest
 {
     /**
      * Определяет пользователей авторизованных для этого запроса.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
     /**
      * Правила валидации.
-     *
-     * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'amount' => 'required|integer|min:1',

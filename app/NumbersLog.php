@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App;
 
@@ -13,13 +14,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class NumbersLog extends Model
 {
-
+    /**
+     * @inheritDoc
+     */
     public $timestamps = false;
 
     /**
-     * Таблица модели.
-     *
-     * @var string
+     * @inheritDoc
      */
     protected $table = 'numbers_log';
 
@@ -39,8 +40,8 @@ class NumbersLog extends Model
      *
      * @param $value
      */
-    public function setIpAddressAttribute($value)
+    public function setIpAddressAttribute($value): void
     {
-        $this->attributes['ip_address'] = inet_pton($value);
+        $this->attributes[ 'ip_address' ] = inet_pton($value);
     }
 }

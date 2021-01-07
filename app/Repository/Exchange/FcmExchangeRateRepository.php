@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Repository\Exchange;
 
@@ -9,9 +10,8 @@ class FcmExchangeRateRepository implements ExchangeRateRepositoryInterface
 {
     /**
      * URL ресурса для парсинга курсов валют.
-     * @var string
      */
-    private $url;
+    private string $url;
 
     public function __construct(string $url)
     {
@@ -21,7 +21,7 @@ class FcmExchangeRateRepository implements ExchangeRateRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getValue(string $currency) :float
+    public function getValue(string $currency): float
     {
         return (float) str_replace(',', '.', $this->parseElementProperty($currency, 'Value'));
     }
@@ -29,19 +29,15 @@ class FcmExchangeRateRepository implements ExchangeRateRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function getNominal(string $currency) :int
+    public function getNominal(string $currency): int
     {
         return (int) $this->parseElementProperty($currency, 'Nominal');
     }
 
     /**
      * Получить свойство валюты.
-     *
-     * @param string $currency
-     * @param string $property
-     * @return string
      */
-    protected function parseElementProperty(string $currency, string $property) :string
+    protected function parseElementProperty(string $currency, string $property): string
     {
         if ($xmlObj = simplexml_load_string($this->load())) {
             $path = sprintf('//Valute[%s="%s"]/%s/text()',
@@ -59,10 +55,8 @@ class FcmExchangeRateRepository implements ExchangeRateRepositoryInterface
 
     /**
      * Загрузить данные о курсе валют из ресурса.
-     *
-     * @return string
      */
-    protected function load() :string
+    protected function load(): string
     {
         $cacheKey = config('exchange.currency_market.cache.key');
 

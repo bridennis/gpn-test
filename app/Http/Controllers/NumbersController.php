@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\NumbersFindInFileRequest;
+use App\Http\Requests\FindNumbersInFileRequest;
 use App\Services\NumbersService;
 use Illuminate\Http\UploadedFile;
 
@@ -21,10 +21,11 @@ class NumbersController extends Controller
     /**
      * Выводит результат запроса с формы по поиску чисел в файле.
      *
-     * @param NumbersFindInFileRequest $request
+     * @param FindNumbersInFileRequest $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function findFromFileByDigit(NumbersFindInFileRequest $request)
+    public function findFromFileByDigit(FindNumbersInFileRequest $request)
     {
         $validated = $request->validated();
 

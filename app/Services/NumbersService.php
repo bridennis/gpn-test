@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Http\Requests\NumbersFindInFileRequest;
+use App\Http\Requests\FindNumbersInFileRequest;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -21,7 +21,7 @@ class NumbersService
      *
      * @return string Строковое представление массива
      */
-    public static function getFromFileByDigit(string $fileName, int $digit) :string
+    public static function getFromFileByDigit(string $fileName, int $digit): string
     {
         $resArr = [];
 
@@ -68,20 +68,17 @@ class NumbersService
      * @param int $digit
      * @return bool
      */
-    protected static function validateArgsGetFromFileByDigitArgs(string $file, int $digit) :bool
+    protected static function validateArgsGetFromFileByDigitArgs(string $file, int $digit): bool
     {
-        $validator = Validator::make(compact('file', 'digit'), (new NumbersFindInFileRequest())->rules());
+        $validator = Validator::make(compact('file', 'digit'), (new FindNumbersInFileRequest())->rules());
 
         return !$validator->fails();
     }
 
     /**
      * Чтение данных из файла.
-     *
-     * @param string $fileName
-     * @return \Generator
      */
-    protected static function genStringsFromFile(string $fileName)
+    protected static function genStringsFromFile(string $fileName): iterable
     {
         $handle = fopen($fileName, 'r');
         $fileReadBufferLength = config('numbers.file.read_buffer_length');
@@ -98,7 +95,7 @@ class NumbersService
      * @param array $arr
      * @return string
      */
-    protected static function arrayToString(array $arr) :string
+    protected static function arrayToString(array $arr): string
     {
         return "[\n" . implode(",\n", $arr) . "\n]\n";
     }

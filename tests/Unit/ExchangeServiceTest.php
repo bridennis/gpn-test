@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Tests\Unit;
 
@@ -13,7 +14,7 @@ class ExchangeServiceTest extends TestCase
     /**
      * @var string ответ от сервиса FCM
      */
-    public static $fcmCacheGet = <<<'EOD'
+    public static string $fcmCacheGet = <<<'EOD'
 <?xml version="1.0" encoding="utf-8"?>
 <ValCurs Date="28.03.2019" name="Foreign Currency Market">
     <Valute ID="R01235">
@@ -29,10 +30,8 @@ EOD;
     /**
      * Конвертируем 100 USD в рубли.
      * Используем внешний класс для мокирования.
-     *
-     * @return void
      */
-    public function testConvertFromUSDToRub()
+    public function testConvertFromUSDToRub(): void
     {
         $amount = 100;
         $currency = 'USD';
@@ -48,10 +47,8 @@ EOD;
     /**
      * Конвертируем 100 USD в рубли.
      * Используем мокирование фасадов.
-     *
-     * @return void
      */
-    public function testMockingCacheFacadeAndConvertFromUSDToRub()
+    public function testMockingCacheFacadeAndConvertFromUSDToRub(): void
     {
 
         $amount = 100;
