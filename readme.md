@@ -41,6 +41,8 @@
 
 ### Результат:
 
+Laravel ^8.0
+
 ##### Требования
 
 ###### Общие
@@ -48,9 +50,6 @@
 [PHP](https://www.php.net/downloads.php) >= 7.4.0
 
 [Composer](https://getcomposer.org/)
-
-Laravel framework 5.8.x
-- см. [Server Requirements](https://laravel.com/docs/5.8/installation)
 
 ###### Для запуска проекта в контейнере
 
@@ -67,7 +66,7 @@ docker-compose exec php composer install
 
 ##### Примечания
 
-- Функционал 1 через CLI (см. помощь):
+- Функционал п. 1 через CLI (см. помощь):
 
 ```shell
 docker-compose exec php php artisan help filter:file-by-digit
@@ -76,5 +75,5 @@ docker-compose exec php php artisan help filter:file-by-digit
 ##### Запуск тестов
 
 ```shell
-dc exec php vendor/bin/phpunit
+docker-compose exec php vendor/bin/phpunit
 ```
