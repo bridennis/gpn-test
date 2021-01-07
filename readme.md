@@ -1,12 +1,13 @@
 [![Build Status](https://travis-ci.org/bridennis/gpn-test.svg?branch=master)](https://travis-ci.org/bridennis/gpn-test) 
 [![codecov](https://codecov.io/gh/bridennis/gpn-test/branch/master/graph/badge.svg)](https://codecov.io/gh/bridennis/gpn-test)
 
-
 ### Задание:
 
 Необходимо реализовать на Laravel проект с функционалом:
+<details>
+    <summary>1. Необходимо реализовать метод, который на вход принимает текстовый файл и одна цифра (от 1 до 9).</summary>
 
-1. Необходимо реализовать метод, который на вход принимает текстовый файл и одна цифра (от 1 до 9). Нужно найти в файле все числа в которых встречается заданная цифра и отсортировать по количеству цифр в числе, например:
+Нужно найти в файле все числа в которых встречается заданная цифра и отсортировать по количеству цифр в числе, например:
 
 43534 кот 45 23 - Содержимое файла
 
@@ -22,18 +23,19 @@
 
 ]
 ```
+    
+    Так же должна быть возможность выполнить такую же операцию из консольной команды.
+    Все запросы должны складываться в БД (любую).
+</details>
 
-Так же должна быть возможность выполнить такую же операцию из консольной команды.
-Все запросы должны складываться в БД (любую).
- 
-
-2. Необходимо написать метод интеграции с курсом валют, рекомендую для примера использовать https://www.cbr-xml-daily.ru/daily_utf8.xml.
-
+<details>
+    <summary>2. Необходимо написать метод интеграции с курсом валют, рекомендую для примера использовать https://www.cbr-xml-daily.ru/daily_utf8.xml.</summary>
+    
 На вход подаем два параметра amount и currency. Необходимо сконвертировать значение amount относительно валюты, заданной в currency, например:
-
 ```
 ?amount=100&currency=USD
 ```
+</details>
 
 ---
 
@@ -56,7 +58,7 @@ Laravel framework 5.8.x
 
 ##### Запуск проекта в контейнере
 
-```
+```shell
 docker-compose up -d
 docker-compose exec php composer install
 ```
@@ -67,6 +69,12 @@ docker-compose exec php composer install
 
 - Функционал 1 через CLI (см. помощь):
 
+```shell
+docker-compose exec php php artisan help filter:file-by-digit
 ```
-docker-compose exec php php artisan help numbers:get-from-file-by-digit
+
+##### Запуск тестов
+
+```shell
+dc exec php vendor/bin/phpunit
 ```
