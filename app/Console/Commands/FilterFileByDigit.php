@@ -7,14 +7,14 @@ use App\Services\NumbersService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Validator;
 
-class NumbersGetFromFileByDigit extends Command
+class FilterFileByDigit extends Command
 {
     /**
      * Имя и подпись консольной команды.
      *
      * @var string
      */
-    protected $signature = 'numbers:get-from-file-by-digit
+    protected $signature = 'filter:file-by-digit
         {file : Полный путь к файлу}
         {digit : Искомая цифра от 1 до 9}';
 
